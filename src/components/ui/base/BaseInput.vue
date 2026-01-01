@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label v-if="label" :for="id" class="form-label">{{label}}</label>
+        <label v-if="label" :for="id" class="form-label fw-semibold">{{label}}</label>
         <input :id="id" :type="type" :placeholder="placeholder" :value="modelValue" :disabled="disable" class="form-control" 
         :class="{ 'is-invalid': error }" @input="updateValue" />
         <div v-if="error" class="invalid-feedback">{{error}}</div>
@@ -23,3 +23,14 @@
         emit('update:modelValue', event.target.value);
     }
 </script>
+
+<style scoped>
+    .form-control.is-invalid{
+    border-color: var(--bs-form-invalid-border-color);
+    padding-right: calc(1.5em + .75rem);
+    background: none !important;
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+    }
+</style>

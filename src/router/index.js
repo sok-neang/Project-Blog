@@ -4,6 +4,8 @@ import DashboardView from '@/views/DashboardView.vue'
 import LoginView from '@/components/Authentication/LoginView.vue'
 import ArticleListView from '@/views/article/ArticleListView.vue'
 import ArticleCreateView from '@/views/article/ArticleCreateView.vue'
+import ArticlePreviewView from '@/views/article/ArticlePreviewView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +35,14 @@ const router = createRouter({
               component: ArticleListView,
               meta:{
                 title: 'Article List'
+              }
+            },
+            {
+              path: ':id',
+              name: 'article.preview',
+              component: ArticlePreviewView,
+              meta:{
+                title: 'Article Detail'
               }
             },
             {

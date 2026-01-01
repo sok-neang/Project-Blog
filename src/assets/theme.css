@@ -1,0 +1,39 @@
+/* Theme styles: cards, buttons, inputs */
+
+/* Dashboard header */
+.dashboard-header h2 { font-size: 1.5rem; font-weight: 700; }
+.dashboard-header .text-muted { opacity: 0.9; }
+
+/* Article card styles */
+.article-card { transition: transform .18s ease, box-shadow .18s ease; border: none; overflow: hidden; background: #fff; }
+.article-card { box-shadow: 0 6px 18px rgba(15,23,42,0.04); border-radius: .85rem; }
+.article-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(15,23,42,0.12); }
+
+.card-img-wrapper { position: relative; overflow: hidden; height: 180px; }
+.card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; display: block; }
+.article-card:hover .card-img-wrapper img { transform: scale(1.05); }
+.card-img-overlay-gradient { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.28) 100%); pointer-events: none; }
+
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(90deg,#4f46e5,#06b6d4); 
+  border: none; 
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(99,102,241,0.14);
+}
+.btn-primary:hover{ filter: brightness(0.98); }
+.btn-lg{ padding: .5rem 1rem; font-weight: 600; }
+
+/* Input */
+input.form-control { min-width: 220px; border-radius: .5rem; }
+
+/* Utility */
+.text-muted.small { font-size: .85rem; }
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .dashboard-header .col-md-6 { text-align: center; }
+  .dashboard-header .col-md-6 .d-flex { justify-content: center; }
+}

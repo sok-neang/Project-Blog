@@ -4,15 +4,15 @@
             <div class="col-5">
                 <div class="card p-5 shadow">
                     <h2 class="text-center">Login</h2>
-                    <form @submit.prevent="handleSubmit">
+                    <form @submit.prevent="handleLogin">
                         <div class="mb-3">
                             <base-input :error="errors.email" id="email" type="email" v-model="email" label="Email address" placeholder="Enter email" @input="validateEmail"></base-input>
                         </div>
                         <div class="mb-3 position-relative">
-                            <base-input :type="passwordVisible ? 'text' : 'password'" v-model="password" label="Password" placeholder="Password" @input="validatePassword"></base-input>
+                            <base-input :error="errors.password" :type="passwordVisible ? 'text' : 'password'" v-model="password" label="Password" placeholder="Password" @input="validatePassword"></base-input>
                             <i :class="passwordVisible? 'bi bi-eye': 'bi bi-eye-slash'" @click="showPassword" style="position: absolute; top: 70%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
                         </div>
-                        <base-button :error="errors.password" id="pass" class="w-100" type="submit" variant="primary" :isLoading="loading">Submit</base-button>
+                        <base-button id="pass" class="w-100" type="submit" variant="primary" :isLoading="loading">Submit</base-button>
                         <a href="" class="d-block text-center mt-3 text-decoration-none">forgote password? sing Up</a>
                     </form>
                 </div>
@@ -39,15 +39,19 @@
     const togglePassword = () => (showPass.value = !showPass.value); 
 
     const validateEmail = () => {
-        validateField('email', email.value, 'error');
+        validateField('email', email.value, 'Please input email');
     };
     const validatePassword = () => {
-        validateField('password', password.value, 'error');
+        validateField('password', password.value, 'Please input password');
     };
 
     const validateForm = () => {
         let isValid = true;
-        if(!validateEmail() || !validatePassword()) {
+
+        if(!validateEmail()) {
+            isValid = false;
+        }
+        if(!validatePassword()) {
             isValid = false;
         }
         return isValid;
@@ -59,8 +63,8 @@
     }
 
 
-    async function handleSubmit(e) {
-        if(!validateForm()) {
+    async function handleLogin(e) {
+        if(!validateForm) {
             return;
         }
 
